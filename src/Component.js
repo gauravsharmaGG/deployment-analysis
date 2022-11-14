@@ -108,7 +108,7 @@ export function Description() {
   return (
     <div className="flex flex-col text-center w-full mb-20 mt-14">
       <h2 className="text-xs tracking-widest font-medium title-font mb-1 italic tagline">
-        Lightly Used Shoes, Cheap!
+        Lightly Used Shoes, Cheaps!
       </h2>
       <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 font-bold">
         Clearance Items
