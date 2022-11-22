@@ -9,8 +9,7 @@ function App() {
     fetch("/api/v1/shoes")
       .then((response) => response.json())
       .then((data) => {
-        setShoes(data.shoes)
-        console.log(data, shoes)
+        setShoes(data?.response?.shoes)
       });
   }, []);
 
@@ -22,7 +21,7 @@ function App() {
       </div>
       <div className="container mx-auto ">
         <div className="flex mt-10 flex-wrap  pb-5 ">
-          {data.map((shoeDetails) => (
+          {shoes && shoes.map((shoeDetails) => (
             <Item {...shoeDetails} key={shoeDetails.key} />
           ))}
         </div>
