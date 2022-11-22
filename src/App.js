@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { data, Description, Header, Item } from "./Component";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <div className="container mx-auto px-4 mt-4">
+        <Description />
+      </div>
+      <div className="container mx-auto ">
+        <div className="flex mt-10 flex-wrap  pb-5 ">
+          {data.map((shoeDetails) => (
+            <Item {...shoeDetails} key={shoeDetails.key} />
+          ))}
+        </div>
+      </div>
+    </>
   );
 }
 
