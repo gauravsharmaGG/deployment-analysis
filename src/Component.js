@@ -100,7 +100,7 @@ export function Header() {
 
         <h1 className="ml-4 font-extrabold text-3xl logo-text">
           Cloudflare Pages Analysis{" "}
-          {Cookies.get("ab-test-cookie" === "new") && "New Version"}
+          {Cookies.get("ab-test-cookie") === "new" && "New Version"}
         </h1>
       </div>
     </header>
