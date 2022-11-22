@@ -1,7 +1,19 @@
+import { useEffect, useState } from "react";
 import "./App.css";
 import { data, Description, Header, Item } from "./Component";
 
 function App() {
+  const [shoes, setShoes] = useState(null);
+
+  useEffect(() => {
+    fetch("/api/v1/shoes")
+      .then((response) => response.json())
+      .then((data) => {
+        setShoes(data.shoes)
+        console.log(data, shoes)
+      });
+  }, []);
+
   return (
     <>
       <Header />
