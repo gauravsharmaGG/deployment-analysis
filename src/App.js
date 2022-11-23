@@ -1,7 +1,18 @@
+import { useEffect, useState } from "react";
 import "./App.css";
 import { data, Description, Header, Item } from "./Component";
 
 function App() {
+  const [shoes, setShoes] = useState(null);
+
+  useEffect(() => {
+    fetch("/api/v1/shoes")
+      .then((response) => response.json())
+      .then((data) => {
+        setShoes(data?.response?.shoes)
+      });
+  }, []);
+
   return (
     <>
       <Header />
@@ -10,7 +21,7 @@ function App() {
       </div>
       <div className="container mx-auto ">
         <div className="flex mt-10 flex-wrap  pb-5 ">
-          {data.map((shoeDetails) => (
+          {shoes && shoes.map((shoeDetails) => (
             <Item {...shoeDetails} key={shoeDetails.key} />
           ))}
         </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import Cookies from "js-cookie";
 
 const { useState } = React;
 
@@ -79,7 +80,6 @@ export const data = [
   },
 ];
 
-
 export function Header() {
   return (
     <header className="py-3 w-full">
@@ -98,7 +98,10 @@ export function Header() {
           />
         </svg>
 
-        <h1 className="ml-4 font-extrabold text-3xl logo-text">Cloudflare Pages Analysis</h1>
+        <h1 className="ml-4 font-extrabold text-3xl logo-text">
+          Cloudflare Pages Analysis - {" "}
+          {Cookies.get("ab-test-cookie") === "new" && "New Version"}
+        </h1>
       </div>
     </header>
   );
