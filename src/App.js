@@ -21,8 +21,8 @@ function App() {
       </div>
       <div className="container mx-auto ">
         <div className="flex mt-10 flex-wrap  pb-5 ">
-          {shoes && shoes.map((shoeDetails) => (
-            <Item {...shoeDetails} key={shoeDetails.key} />
+          {shoes && shoes.map((shoeDetails, idx) => (
+            <Item {...shoeDetails} key={shoeDetails.key} fetchSlowly={idx !== 0} />
           ))}
         </div>
       </div>

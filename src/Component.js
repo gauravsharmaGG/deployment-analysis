@@ -135,6 +135,7 @@ export function Item({
   availableSizes,
   freeShipping,
   oneLeft,
+  fetchSlowly,
 }) {
   return (
     <div className=" w-full lg:w-1/3 mt-3 px-4">
@@ -151,7 +152,7 @@ export function Item({
                 Just One Left!
               </div>
             )}
-            <img src={image} alt={alt} className="rounded-lg w-full" />
+            <img src={image} alt={alt} className="rounded-lg w-full" fetchPriority={fetchSlowly ? 'low' : ''} />
           </div>
           <div className="flex items-center justify-between my-3">
             <h3 className="text-2xl uppercase font-semibold">{title}</h3>
