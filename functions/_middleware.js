@@ -18,7 +18,7 @@ const abTest = async ({ request, next, env }) => {
       const percentage = Math.floor(Math.random() * 100)
       let version = "current" // default version
       // change pathname and version name for 50% of traffic 
-      if (percentage < 40) {
+      if (percentage < 50) {
         url.pathname = newHomepagePathName
         version = "new"
       }
