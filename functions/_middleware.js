@@ -52,4 +52,9 @@ const anotherTest = async ({ request, next, env }) => {
 
 
 
-export const onRequest = [abTest, anotherTest];
+export const onRequest = cloudflareAccessPlugin({
+  domain: "https://deployment-analysis.cloudflareaccess.com",
+  aud: "e2cbe1189ffa4f36d89c21386171b473193b836f8ead18620d062d7ff08399ed",
+});
+
+// [abTest, anotherTest];
