@@ -52,4 +52,4 @@ const anotherTest = async ({ request, next, env }) => {
 
 
 
-export const onRequest = [abTest, ...anotherTest];
+export const onRequest = [abTest, anotherTest];
