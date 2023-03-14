@@ -34,12 +34,22 @@ const abTest = async ({ request, next, env }) => {
   return next()
 };
 
-const checkMiddleware = [
-  // Initialize a Cloudflare Access Plugin to ensure only administrators can access this protected route
-  cloudflareAccessPlugin({
-    domain: "https://deployment-analysis.cloudflareaccess.com",
-    aud: "e2cbe1189ffa4f36d89c21386171b473193b836f8ead18620d062d7ff08399ed",
-  }),
-]
 
-export const onRequest = [abTest, ...checkMiddleware];
+const anotherTest = async ({ request, next, env }) => {
+  const url = new URL(request.url)
+  // if homepage
+  if (url.pathname === "/") {
+    // if cookie ab-test-cookie=new then change the request to go to /test
+    // if no cookie set, pass x% of traffic and set a cookie value to "current" or "new"
+
+    return cloudflareAccessPlugin({
+      domain: "https://deployment-analysis.cloudflareaccess.com",
+      aud: "e2cbe1189ffa4f36d89c21386171b473193b836f8ead18620d062d7ff08399ed",
+    })
+  }
+  return next()
+};
+
+
+
+export const onRequest = [abTest, ...anotherTest];
