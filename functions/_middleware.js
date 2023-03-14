@@ -1,3 +1,5 @@
+import cloudflareAccessPlugin from "@cloudflare/pages-plugin-cloudflare-access";
+
 const cookieName = "ab-test-cookie"
 const newHomepagePathName = "?ver=newUrl"
 
@@ -32,4 +34,12 @@ const abTest = async ({ request, next, env }) => {
   return next()
 };
 
-export const onRequest = [abTest];
+const checkMiddleware = [
+  // Initialize a Cloudflare Access Plugin to ensure only administrators can access this protected route
+  cloudflareAccessPlugin({
+    domain: "https://deployment-analysis.cloudflareaccess.com",
+    aud: "e2cbe1189ffa4f36d89c21386171b473193b836f8ead18620d062d7ff08399ed",
+  }),
+]
+
+export const onRequest = [abTest, ...checkMiddleware];
