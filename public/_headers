@@ -4,3 +4,7 @@
   Referrer-Policy: no-referrer
   Permissions-Policy: document-domain=()
   Content-Security-Policy: script-src 'self'; frame-ancestors 'none';
+  Access-Control-Allow-Credentials: true
+
+/?parentApplicationUrl=:project
+  Access-Control-Allow-Origin: https://.:project.deliveryhero.io

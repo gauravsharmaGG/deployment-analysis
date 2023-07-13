@@ -1,3 +1,5 @@
+import cloudflareAccessPlugin from "@cloudflare/pages-plugin-cloudflare-access";
+
 const cookieName = "ab-test-cookie"
 const newHomepagePathName = "?ver=newUrl"
 
@@ -32,4 +34,27 @@ const abTest = async ({ request, next, env }) => {
   return next()
 };
 
-export const onRequest = [abTest];
+
+const anotherTest = async ({ request, next, env }) => {
+  const url = new URL(request.url)
+  // if homepage
+  if (url.pathname === "/") {
+    // if cookie ab-test-cookie=new then change the request to go to /test
+    // if no cookie set, pass x% of traffic and set a cookie value to "current" or "new"
+
+    return cloudflareAccessPlugin({
+      domain: "https://deployment-analysis.cloudflareaccess.com",
+      aud: "e2cbe1189ffa4f36d89c21386171b473193b836f8ead18620d062d7ff08399ed",
+    })
+  }
+  return next()
+};
+
+
+
+// export const onRequest = cloudflareAccessPlugin({
+//   domain: "https://deployment-analysis.cloudflareaccess.com",
+//   aud: "e2cbe1189ffa4f36d89c21386171b473193b836f8ead18620d062d7ff08399ed",
+// });
+
+// [abTest, anotherTest];
