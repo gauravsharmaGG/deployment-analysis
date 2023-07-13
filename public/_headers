@@ -6,5 +6,5 @@
   Content-Security-Policy: script-src 'self'; frame-ancestors 'none';
   Access-Control-Allow-Credentials: true
 
-/?parentApplicationUrl=https://portal-:platform.deliveryhero.io/
-  Access-Control-Allow-Origin: https://portal-.:platform.deliveryhero.io
+/?parentApplicationUrl=https://:project.deliveryhero.io/
+  Access-Control-Allow-Origin: https://staging.:project.pages.dev/
