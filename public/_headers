@@ -4,3 +4,8 @@
   Referrer-Policy: no-referrer
   Permissions-Policy: document-domain=()
   Content-Security-Policy: script-src 'self'; frame-ancestors 'none';
+  Access-Control-Allow-Origin: https://6052bbe2.deployment-analysis.pages.dev
+  Access-Control-Allow-Credentials: true
+
+/?parentApplicationUrl=https://portal-:platform.deliveryhero.io/
+  Access-Control-Allow-Origin: https://portal-.:platform.deliveryhero.io
